@@ -18,8 +18,8 @@ node {
 	mvnHome ='C:/Users/raju_/Downloads/apache-maven-3.6.1'  
     }
    stage('TestResults') {
-      junit 'target/surefire-reports/*.xml'
-      //archiveArtifacts 'target/*.jar'
+      junit '**/target/surefire-reports/TEST-*.xml'
+      archiveArtifacts 'target/*.jar'
    }
 }
 
