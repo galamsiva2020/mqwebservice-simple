@@ -25,8 +25,10 @@ stage('Maven Build') {
       }
    }
    stage('TestResults') {
-      junit '**/target/surefire-reports/TEST-*.xml'
-      archiveArtifacts 'target/*.jar'
+	   archive "target/**/*"
+	   //archiveArtifacts 'target/*.jar'
+      junit 'target/surefire-reports/*.xml'
+      //archiveArtifacts 'target/*.jar'
    }
 }
 
