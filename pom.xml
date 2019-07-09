@@ -5,9 +5,9 @@
 
 
 	<groupId>com.mqwebservice</groupId>
-	<artifactId>mqwebservice-simple-file</artifactId>
+	<artifactId>mqwebservice.simple.file</artifactId>
 	<!-- version>0.0.1-SNAPSHOT</version -->
-	<name>mqwebservice-simple-file</name>
+	<name>mqwebservice.simple.file</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
