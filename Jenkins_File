@@ -3,8 +3,9 @@ pipeline {
     triggers {
         cron('30 23 * * 1-5')
     }
-	environment {
-        MAVEN_HOME = tool('M3')
+	tools {
+        // Install the Maven version configured as "M3" and add it to the path.
+        maven "M3"
     }
 
 	stages {
@@ -14,7 +15,7 @@ pipeline {
             }
         }
 		stage('Maven Build'){
-		    sh '${MAVEN_HOME}/bin/mvn -B verify'
+		    sh "mvn clean package"
 
 			}
 			
