@@ -6,7 +6,7 @@ import java.util.LinkedHashMap;
 import java.util.Vector;
 
 /*
-@author Sridhar Akula
+@author Sivakrishna Galam
 This class is to handle Transaction attributes,
 parse message and validate message.
 
