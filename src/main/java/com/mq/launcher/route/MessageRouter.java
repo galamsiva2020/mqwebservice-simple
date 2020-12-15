@@ -6,7 +6,7 @@ import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
 
 /*
-    @author Sridhar Akula
+    @author Sivakrishna Galam
     This class is to build the Route to process the message from JMS Queue.
 */
 
