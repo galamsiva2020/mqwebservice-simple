@@ -1,0 +1,51 @@
+//*
+* Galam Sivakrishna
+**/
+  pipeline {
+    agent any
+       triggers{
+           pollSCM('* * * * *')
+           cron('30 00 * * *')
+       }
+	environment {
+        MAVEN_HOME = tool('M3')
+    }
+
+	stages {
+        stage('Git checkout') {
+            steps {
+               git credentialsId: 'GitHub', url: 'https://github.com/galamsiva2020/spring-boot-hibernate-curd-application.git'   
+               }
+        }
+		stage('Maven Build'){
+		steps{
+		    sh '${MAVEN_HOME}/bin/mvn -B verify'
+           }
+			}
+			
+		stage('JunitTestResults') {
+		steps{
+	        junit '**/target/surefire-reports/TEST-*.xml'
+              archiveArtifacts 'target/*.jar'
+			  }
+         }
+
+         stage('Email Notification'){
+		    steps{
+		        emailext body: '''Hi ,
+                    Welcome to Wemalo Team
+                     Thanks
+                     Siva.
+               ''', subject: 'JenkinsPipeline_Build', to: 'siva.galam@4elements-gruppe.de'
+		    }
+    }
+    
+            stage('GCP Uploading_Artificats'){
+               steps{
+                  googleStorageUpload bucket: 'gs://jenkins-4es', 
+            	  credentialsId: 'developer-service-key', 
+            	  pattern: 'target/*.jar'
+        }
+        }
+    }
+}
