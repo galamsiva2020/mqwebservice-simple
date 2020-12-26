@@ -10,7 +10,7 @@ pipeline {
         stage("Checkout code") {
             steps {
                https://github.com/galamsiva2020/mqwebservice-simple.git
-            }
+            
         }
         stage("Build image") {
             steps {
